@@ -63,6 +63,10 @@ END ;
 
     public function __destruct()
     {
+        if (!file_exists($this->localPath)) {
+            return;
+        }
+
         $this->client->putObject([
             'Bucket' => $this->bucket,
             'Key' => $this->database,
